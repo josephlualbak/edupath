@@ -1,7 +1,6 @@
 # EduPath Admin - Smart College Admissions Platform
 
-**Project Link:** [Hackathon Submission](https://coderush1.devpost.com/?ref_content=default&ref_feature=challenge&ref_medium=portfolio&_gl=1*10ull98*_gcl_au*MzIzMjc2MjAwLjE3NTM2MzI3MjQ.*_ga*NTA1NzQ2MzQuMTc1MzYzMjc0Mw..*_ga_0YHJK3Y10M*czE3NTY5OTI3NTIkbzIxJGcxJHQxNzU2OTkyNzU4JGo1NCRsMCRoMA..)
-
+**Project Link:** https://github.com/josephlualbak/edupath.git
 ---
 
 ## 📘 Project Summary
