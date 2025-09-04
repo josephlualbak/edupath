@@ -1,14 +1,7 @@
-
----
-
-# 📜 `requirements.txt`
-
-```txt
 fastapi
 uvicorn
 pandas
 openpyxl
-sqlalchemy
+reportlab
+python-multipart
 jinja2
-networkx
-reportlab   # for future PDF reports
