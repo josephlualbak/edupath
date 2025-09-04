@@ -5,3 +5,9 @@ openpyxl
 reportlab
 python-multipart
 jinja2
+fastapi
+uvicorn
+pandas
+openpyxl
+jinja2
+weasyprint
