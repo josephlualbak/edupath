@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>EduPath Admin - Student Allocation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f6f8;
+            color: #2c3e50;
+        }
+        h1 {
+            text-align: center;
+            color: #34495e;
+        }
+        h2 {
+            color: #2980b9;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        }
+        input[type="file"], input[type="text"] {
+            padding: 5px;
+            margin: 5px 0;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            margin: 5px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #3498db;
+            color: white;
+        }
+        .override-form {
+            margin-top: 20px;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            background-color: #ecf0f1;
+        }
+        .pdf-button {
+            background-color: #27ae60;
+        }
+        .pdf-button:hover {
+            background-color: #1e8449;
+        }
+        .report-link {
+            color: #e67e22;
+            text-decoration: none;
+        }
+        .report-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>EduPath Admin</h1>
+
+    <!-- Upload Excel -->
+    <h2>Upload Student Records (Excel)</h2>
+    <form id="uploadForm">
+        <input type="file" id="excelFile" required>
+        <button type="submit">Upload & Allocate</button>
+    </form>
+
+    <!-- Allocations Table -->
+    <h2>Student Allocations</h2>
+    <div id="allocationsTable">
+        <!-- Allocations table injected here -->
+    </div>
+
+    <!-- Manual Override -->
+    <h2>Manual Override</h2>
+    <div class="override-form">
+        <form id="overrideForm">
+            <label>Student ID:</label>
+            <input type="text" id="studentId" required>
+            <label>University:</label>
+            <input type="text" id="university" required>
+            <label>Course:</label>
+            <input type="text" id="course" required>
+            <button type="submit">Apply Override</button>
+        </form>
+    </div>
+
+    <!-- Download Full PDF -->
+    <h2>Download Full Allocations PDF</h2>
+    <button class="pdf-button" onclick="downloadFullPDF()">Download PDF</button>
+</div>
+
+<script>
+    // ======================
+    // Upload Excel & Allocate
+    // ======================
+    document.getElementById("uploadForm").addEventListener("submit", async function(e){
+        e.preventDefault();
+        let fileInput = document.getElementById("excelFile");
+        if (!fileInput.files[0]) return alert("Select an Excel file first.");
+        let formData = new FormData();
+        formData.append("file", fileInput.files[0]);
+
+        const res = await fetch("/allocate", { method: "POST", body: formData });
+        const html = await res.text();
+        document.getElementById("allocationsTable").innerHTML = html;
+    });
+
+    // ======================
+    // Manual Override
+    // ======================
+    document.getElementById("overrideForm").addEventListener("submit", async function(e){
+        e.preventDefault();
+        const studentId = document.getElementById("studentId").value;
+        const university = document.getElementById("university").value;
+        const course = document.getElementById("course").value;
+
+        await fetch("/override", {
+            method: "POST",
+            body: new URLSearchParams({
+                student_id: studentId,
+                university: university,
+                course: course
+            })
+        });
+
+        // Refresh allocations table immediately
+        document.getElementById("uploadForm").dispatchEvent(new Event("submit"));
+    });
+
+    // ======================
+    // Download full allocations PDF
+    // ======================
+    async function downloadFullPDF() {
+        const res = await fetch("/download_full_pdf");
+        if (res.status === 200) {
+            const blob = await res.blob();
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = "allocations_full.pdf";
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+        } else {
+            alert("No allocations available yet.");
+        }
+    }
+</script>
+</body>
+</html>

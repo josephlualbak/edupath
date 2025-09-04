@@ -1,0 +1,86 @@
+[
+  {
+    "country": "Kenya",
+    "name": "University of Nairobi",
+    "courses": [
+      {"name": "Computer Science", "min_score": 12},
+      {"name": "Arts", "min_score": 8},
+      {"name": "Law", "min_score": 14},
+      {"name": "Agriculture", "min_score": 10}
+    ]
+  },
+  {
+    "country": "Kenya",
+    "name": "Strathmore University",
+    "courses": [
+      {"name": "Business", "min_score": 10},
+      {"name": "Engineering", "min_score": 13},
+      {"name": "Data Science", "min_score": 12},
+      {"name": "Finance", "min_score": 11}
+    ]
+  },
+  {
+    "country": "Kenya",
+    "name": "Kenyatta University",
+    "courses": [
+      {"name": "Education", "min_score": 9},
+      {"name": "Nursing", "min_score": 11},
+      {"name": "Environmental Science", "min_score": 10}
+    ]
+  },
+  {
+    "country": "Uganda",
+    "name": "Makerere University",
+    "courses": [
+      {"name": "Medicine", "min_score": 13},
+      {"name": "Education", "min_score": 9},
+      {"name": "Law", "min_score": 14},
+      {"name": "ICT", "min_score": 11}
+    ]
+  },
+  {
+    "country": "Uganda",
+    "name": "Uganda Christian University",
+    "courses": [
+      {"name": "Theology", "min_score": 8},
+      {"name": "Business Administration", "min_score": 10},
+      {"name": "Journalism", "min_score": 9}
+    ]
+  },
+  {
+    "country": "Uganda",
+    "name": "Mbarara University of Science and Technology",
+    "courses": [
+      {"name": "Pharmacy", "min_score": 13},
+      {"name": "Engineering", "min_score": 12},
+      {"name": "Public Health", "min_score": 11}
+    ]
+  },
+  {
+    "country": "South Sudan",
+    "name": "University of Juba",
+    "courses": [
+      {"name": "General Studies", "min_score": 0},
+      {"name": "Peace and Conflict Studies", "min_score": 9},
+      {"name": "Public Administration", "min_score": 10}
+    ]
+  },
+  {
+    "country": "South Sudan",
+    "name": "Upper Nile University",
+    "courses": [
+      {"name": "Agriculture", "min_score": 8},
+      {"name": "Education", "min_score": 9},
+      {"name": "Nursing", "min_score": 10}
+    ]
+  },
+  {
+    "country": "South Sudan",
+    "name": "Catholic University of South Sudan",
+    "courses": [
+      {"name": "Philosophy", "min_score": 7},
+      {"name": "Business Management", "min_score": 10},
+      {"name": "Social Work", "min_score": 9}
+    ]
+  }
+]
