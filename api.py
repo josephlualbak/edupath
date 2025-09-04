@@ -110,6 +110,7 @@ async def download_full_pdf():
 
 # ======================
 # Run server
+#Please make sure to set host="127.0.0.1" if you run it locally
 # ======================
 if __name__ == "__main__":
-    uvicorn.run("api:app", host="127.0.0.1", port=8000, reload=True)
+    uvicorn.run("api:app", host="0.0.0.0", port=8000, reload=True)
